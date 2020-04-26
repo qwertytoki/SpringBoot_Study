@@ -1,5 +1,6 @@
 package com.example.gipsg.search.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.gipsg.search.entity.Search;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class UserController {
@@ -24,9 +27,9 @@ public class UserController {
 
     @RequestMapping("/user/list")
     public String displayList(@ModelAttribute("search") Search search, Model model) {
-        List<User> userlist = userService.search(search);
+        List<User> userList = userService.search(search);
         model.addAttribute("search", search);
-        model.addAttribute("userlist", userlist);
+        model.addAttribute("userlist", userList);
         model.addAttribute("radioItems", searchItemService.getRadioItems());
         model.addAttribute("checkItems", searchItemService.getCheckItems());
         return "user/list";
