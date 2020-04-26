@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Info</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+    <link href="/css/list.css" rel="stylesheet"></link>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>User Information</h1>
+    <form action="#" th:action="@{/user/list}" th:object="${search}">
+        <table>
+            <tr>
+                <th class="cell_title text-center">Name</th>
+                <td><input type="text" th:field="*{name}" ></td>
+            </tr>
+            <tr class="form-group text-center">
+                <th class="align-middle">Nationality</th>
+                <td>
+                    <div th:each="item : ${radioItems}"  class="form-check-inline">
+                        <input type="radio" name="selectedRadio" th:field="*{nationality}"  th:value="${item.key}" th:text="${item.value}" class="form-check-input"/>
+                    </div>
+                </td>
+            </tr>
+            <tr class="form-group text-center">
+                <th class="align-middle">Hobby</th>
+                <td>
+                    <div th:each="item : ${checkItems}">
+                        <label >Workout</label><input type="checkbox" th:field="*{hobby}" th:value="${item}" />
+                    </div>
+                </td>
+            <tr class="form-group">
+        </table>
+        <div class="btn_area_center text-right"><input type="submit"  value="Search" class="btn-primary"></div>
+    </form>
+<table>
+    <thead>
+    <tr class="text-center">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Nationality</th>
+        <th>Phone Number</th>
+        <th>Hobby</th>
+        <th>Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${userlist}" th:object="${user}">
+        <td class="center" th:text="*{id}"></td>
+        <td class="center" th:text="*{name}"></td>
+        <td class="center" th:text="*{nationality}"></td>
+        <td class="center" th:text="*{phone}"></td>
+        <td class="center" th:text="*{hobby}"></td>
+        <td class="center"><a th:href="@{/user/{id}(id=*{id})}">Detail</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+This is POC by using SpringBoot + Thymeleaf
+# How to Run 
+1. Install Docker
+
+    Mac : https://docs.docker.com/docker-for-mac/  </br>
+    Windows : https://docs.docker.com/docker-for-windows/
+
+2. Build the docker image  
+    ```docker build -t springio/search  .```
+
+3. Run the docker container  
+    ```docker run -p 8080:8080 springio/search```
+
+4. Access URL   
+    ```http://localhost:8080/user/list```
