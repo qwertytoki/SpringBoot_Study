@@ -13,11 +13,11 @@ import org.springframework.util.StringUtils;
 @Service
 public class UserService{
     private User user1 = new User(1,"Shuya","Japan","12345678" ,"");
-    private User user2 = new User(2,"Nick","Singapore","44445555","");
-    private User user3 = new User(3,"Shuwei","China","77778888","");
-    private User user4 = new User(4,"David","Sweden","56785678","");
-    private User user5 = new User(5,"Kinkoon","Singapore","12341234","");
-    private User user6 = new User(6,"Pearlyn","Singapore","59595959","");
+    private User user2 = new User(2,"Nook","Singapore","44445555","");
+    private User user3 = new User(3,"Sowei","China","77778888","");
+    private User user4 = new User(4,"Dave","Sweden","56785678","");
+    private User user5 = new User(5,"Kick","Singapore","12341234","");
+    private User user6 = new User(6,"Pearl","Singapore","59595959","");
 
     public List<User> search(Search search) {
         String name = search.getName();
