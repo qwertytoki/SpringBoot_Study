@@ -45,14 +45,10 @@ public class UserService {
     }
 
     public User findById(int id) {
-        switch (id) {
-            case 1: return new User(1, "Shuya", "Japan", "12345678", "");
-            case 2: return new User(2, "Nick", "Singapore", "44445555", "");
-            case 3: return new User(3, "Shuwei", "China", "77778888", "");
-            case 4: return new User(4, "David", "Sweden", "56785678", "");
-            case 5: return new User(5, "Kinkoon", "Singapore", "12341234", "");
-            case 6: return new User(6, "Pearlyn", "Singapore", "59595959", "");
-            default: throw new IllegalStateException("Unexpected value: " + id);
+        List<User> userList = userDao.getUsers();
+        for(User user:userList){
+            if(user.getId()==id)return user;
         }
+        throw new IllegalArgumentException("Parameter's id is not exist. id:"+id);
     }
 }
