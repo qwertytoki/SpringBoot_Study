@@ -39,18 +39,18 @@ public class UserService {
                 searchedList.add(user);
             }
         }
-
         return searchedList;
     }
 
     private List<User> searchByNationality(String nationalityId, List<User> userList) {
+        List<User> searchedList = new ArrayList<>();
         String nationality = searchItemService.getRadioItems().get(nationalityId);
-        for (int i = 0; i < userList.size(); i++) {
-            if (!userList.get(i).getNationality().equals(nationality)) {
-                userList.remove(i);
+        for (User user : userList) {
+            if(user.getNationality().equalsIgnoreCase(nationality)){
+                searchedList.add(user);
             }
         }
-        return userList;
+        return searchedList;
     }
 
     private List<User> searchAll() {
