@@ -43,6 +43,7 @@ public class UserService {
     }
 
     private List<User> searchByNationality(String nationalityId, List<User> userList) {
+        if(nationalityId.equals("1"))return userList;
         List<User> searchedList = new ArrayList<>();
         String nationality = searchItemService.getRadioItems().get(nationalityId);
         for (User user : userList) {

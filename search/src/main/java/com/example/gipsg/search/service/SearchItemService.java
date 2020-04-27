@@ -18,10 +18,10 @@ public class SearchItemService {
     public Map<String,String> getRadioItems(){
         Map<String, String> selectMap = new LinkedHashMap<String, String>();
         selectMap.put("1", "ALL");
-        selectMap.put("2", "Japanese");
-        selectMap.put("3", "Chinese");
-        selectMap.put("4", "Singaporean");
-        selectMap.put("5", "Other");
+        selectMap.put("2", "Japan");
+        selectMap.put("3", "China");
+        selectMap.put("4", "Singapore");
+        selectMap.put("5", "Sweden");
         return selectMap;
     }
     public List<String> getCheckItems(){
