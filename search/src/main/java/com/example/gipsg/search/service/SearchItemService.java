@@ -17,7 +17,7 @@ public class SearchItemService {
 
     public Map<String,String> getRadioItems(){
         Map<String, String> selectMap = new LinkedHashMap<String, String>();
-        selectMap.put("1", "ALL");
+        selectMap.put("1", "All");
         selectMap.put("2", "Japan");
         selectMap.put("3", "China");
         selectMap.put("4", "Singapore");
@@ -26,7 +26,9 @@ public class SearchItemService {
     }
     public List<String> getCheckItems(){
         List<String> checkItemList= new ArrayList<>();
-        checkItemList.add("Workout");
+        checkItemList.add("All");
+        checkItemList.add("Singapore");
+        checkItemList.add("Tokyo");
         return checkItemList;
     }
 }

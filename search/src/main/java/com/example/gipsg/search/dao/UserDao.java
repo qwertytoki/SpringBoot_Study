@@ -29,18 +29,24 @@ public class UserDao {
 
     private List<User> getAllUser() {
         List<User> userList = new ArrayList<>();
-        User user1 = new User(1, "Shuya", "Japan", "12345678", "");
-        User user2 = new User(2, "Nook", "Singapore", "44445555", "");
-        User user3 = new User(3, "Sowei", "China", "77778888", "");
-        User user4 = new User(4, "Dave", "Sweden", "56785678", "");
-        User user5 = new User(5, "Kick", "Singapore", "12341234", "");
-        User user6 = new User(6, "Pearl", "Singapore", "59595959", "");
+        User user1 = new User(1, "Shuya", "Japan", "Singapore", "");
+        User user2 = new User(2, "Nook", "Singapore", "Singapore", "");
+        User user3 = new User(3, "Sowei", "China", "Singapore", "");
+        User user4 = new User(4, "Dave", "Sweden", "Singapore", "");
+        User user5 = new User(5, "Kick", "Singapore", "Singapore", "");
+        User user6 = new User(6, "Pearl", "Singapore", "Singapore", "");
+        User user7 = new User(7, "Shira", "Japan", "Tokyo", "");
+        User user8 = new User(8, "Alex", "Belgium", "Tokyo", "");
+        User user9 = new User(9, "Neehaa", "India", "Tokyo", "");
         userList.add(user1);
         userList.add(user2);
         userList.add(user3);
         userList.add(user4);
         userList.add(user5);
         userList.add(user6);
+        userList.add(user7);
+        userList.add(user8);
+        userList.add(user9);
         return userList;
     }
 }

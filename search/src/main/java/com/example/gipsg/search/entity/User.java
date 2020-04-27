@@ -32,8 +32,8 @@ public class User implements Serializable {
     @Column(name="nationality")
     private String nationality;
 
-    @Column(name="phone")
-    private String phone;
+    @Column(name="office")
+    private String office;
 
     @Column(name="hobby")
     private String hobby;

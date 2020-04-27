@@ -23,10 +23,10 @@
                 </td>
             </tr>
             <tr class="form-group text-center">
-                <th class="align-middle">Hobby</th>
+                <th class="align-middle">Office</th>
                 <td>
                     <div th:each="item : ${checkItems}">
-                        <label >Workout</label><input type="checkbox" th:field="*{hobby}" th:value="${item}" />
+                        <input type="checkbox" th:field="*{office}" th:value="${item}" />
                     </div>
                 </td>
             <tr class="form-group">
@@ -39,7 +39,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Nationality</th>
-        <th>Phone Number</th>
+        <th>Office</th>
         <th>Hobby</th>
         <th>Link</th>
     </tr>
@@ -49,7 +49,7 @@
         <td class="center" th:text="*{id}"></td>
         <td class="center" th:text="*{name}"></td>
         <td class="center" th:text="*{nationality}"></td>
-        <td class="center" th:text="*{phone}"></td>
+        <td class="center" th:text="*{office}"></td>
         <td class="center" th:text="*{hobby}"></td>
         <td class="center"><a th:href="@{/user/{id}(id=*{id})}">Detail</a></td>
     </tr>
