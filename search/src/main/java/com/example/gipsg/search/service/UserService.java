@@ -16,27 +16,40 @@ import org.springframework.util.StringUtils;
 public class UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private SearchItemService searchItemService;
 
     public List<User> search(Search search) {
+        List<User> userList = searchAll();
         String name = search.getName();
-        if (!StringUtils.isEmpty(name) && name.equalsIgnoreCase("shu")) {
-            return searchNameS();
+        if (!StringUtils.isEmpty(name)) {
+            userList = searchByName(name, userList);
         }
-        String nationality = search.getNationality();
-        if (!StringUtils.isEmpty(nationality) && nationality.equalsIgnoreCase("4")) {
-            return searchSingaporean();
+        String nationalityId = search.getNationality();
+        if (!StringUtils.isEmpty(nationalityId)) {
+            userList = searchByNationality(nationalityId, userList);
         }
-        return searchAll();
-    }
-
-    private List<User> searchNameS() {
-        userDao.getUsers();
-        List<User> userList = userDao.getUsers();
         return userList;
     }
 
-    private List<User> searchSingaporean() {
-        List<User> userList = userDao.getUsers();
+    private List<User> searchByName(String searchWord, List<User> userList) {
+        List<User> searchedList = new ArrayList<>();
+        for (User user : userList) {
+            if (user.getName().toLowerCase().contains(searchWord.toLowerCase())) {
+                searchedList.add(user);
+            }
+        }
+
+        return searchedList;
+    }
+
+    private List<User> searchByNationality(String nationalityId, List<User> userList) {
+        String nationality = searchItemService.getRadioItems().get(nationalityId);
+        for (int i = 0; i < userList.size(); i++) {
+            if (!userList.get(i).getNationality().equals(nationality)) {
+                userList.remove(i);
+            }
+        }
         return userList;
     }
 
@@ -46,9 +59,9 @@ public class UserService {
 
     public User findById(int id) {
         List<User> userList = userDao.getUsers();
-        for(User user:userList){
-            if(user.getId()==id)return user;
+        for (User user : userList) {
+            if (user.getId() == id) return user;
         }
-        throw new IllegalArgumentException("Parameter's id is not exist. id:"+id);
+        throw new IllegalArgumentException("Parameter's id is not exist. id:" + id);
     }
 }
