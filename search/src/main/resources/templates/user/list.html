@@ -11,10 +11,10 @@
 <form action="#" th:action="@{/user/list}" th:object="${search}">
     <table>
         <tr>
-            <th class="cell_title text-center">Name</th>
-            <td><input type="text" th:field="*{name}"></td>
+            <th class="cell_title">Name</th>
+            <td class="text-left"><input type="text" th:field="*{name}"></td>
         </tr>
-        <tr class="form-group text-center">
+        <tr class="form-group">
             <th class="align-middle">Nationality</th>
             <td>
                 <div th:each="item : ${radioItems}" class="form-check-inline">
@@ -23,7 +23,7 @@
                 </div>
             </td>
         </tr>
-        <tr class="form-group text-center">
+        <tr class="form-group">
             <th class="align-middle">Office</th>
             <td>
                 <div th:each="item : ${checkItems}" class="form-check-inline">
@@ -32,11 +32,11 @@
             </td>
         <tr class="form-group">
     </table>
-    <div class="btn_area_center text-right"><input type="submit" value="Search" class="btn-primary"></div>
+    <div class="btn_area_center text-right"><input type="submit" class="form-check-input" class="btn-primary"></div>
 </form>
 <table>
     <thead>
-    <tr class="text-center">
+    <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Nationality</th>

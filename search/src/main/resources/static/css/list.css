@@ -7,6 +7,7 @@ table{
     font-size: 12px;
 }
 table th, table td {
+    text-align: center;
     border: 1px solid #ddd;
     padding: 6px;
 }
