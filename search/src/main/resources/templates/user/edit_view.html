@@ -41,14 +41,14 @@
         <tr>
             <th class="align-middle">Hobbies</th>
             <td id='hobbies'>
-                <div th:each="hobby : ${hobbies}" class="hobby" >
-                    <input  type="button" th:value="${hobby}"/>
+                <div th:each="item : ${hobbies}" class="hobby" >
+                    <input  type="text" th:value="${item}" />
                 </div>
             </td>
             <th class="align-middle">Selected Hobbies</th>
             <td id='selectedHobbies'>
-                <div th:each="hobby : ${selectedHobbies}" class="selectedHobby">
-                    <input type="button" th:field="*{hobby}" th:value="${hobby}"/>
+                <div th:each="item : ${selectedHobbies}" class="selectedHobby">
+                    <input type="text"  th:value="${item}"/>
                 </div>
             </td>
         </tr>
@@ -61,28 +61,28 @@
 <script>
     $(function () {
         $('#hobbies > .hobby').click(function (e) {
-            let add_contents = '<div class="hobby"><input class="selectedHobbyGenerated" type="button" value=';
+            let add_contents = '<div class="hobby"><input class="selectedHobbyGenerated" id="hobby" name="hobby" type="text" value=';
             add_contents += this.children[0].value;
             add_contents += ' /></div>';
             $(add_contents).appendTo("#selectedHobbies")
             $(this).remove();
         });
         $(document).on("click",".hobbyGenerated", function(){
-            let add_contents = '<div class="hobby"><input class="selectedHobbyGenerated" type="button" value=';
+            let add_contents = '<div class="hobby"><input class="selectedHobbyGenerated" id="hobby" name="hobby" type="text" value=';
             add_contents += this.value;
             add_contents += ' /></div>';
             $(add_contents).appendTo("#selectedHobbies")
             $(this).remove();
         });
         $('#selectedHobbies > .hobby').click(function (e) {
-            let add_contents = '<div class="selectedHobby"><input class="hobbyGenerated" type="button" value=';
+            let add_contents = '<div class="selectedHobby"><input class="hobbyGenerated" type="text" value=';
             add_contents += this.children[0].value;
             add_contents += ' /></div>';
             $(add_contents).appendTo("#hobbies")
             $(this).remove();
         });
         $(document).on("click",".selectedHobbyGenerated", function(){
-            let add_contents = '<div class="selectedHobby"><input class="hobbyGenerated" type="button" value=';
+            let add_contents = '<div class="selectedHobby"><input class="hobbyGenerated" type="text" value=';
             add_contents += this.value;
             add_contents += ' /></div>';
             $(add_contents).appendTo("#hobbies")

@@ -29,7 +29,7 @@ public class UserDao {
 
     private List<User> getAllUser() {
         List<User> userList = new ArrayList<>();
-        User user1 = new User("1", "Shuya", "Japan", "Singapore", "");
+        User user1 = new User("1", "Shuya", "Japan", "Singapore", "Workout");
         User user2 = new User("2", "Nook", "Singapore", "Singapore", "");
         User user3 = new User("3", "Sowei", "China", "Singapore", "");
         User user4 = new User("4", "Dave", "Sweden", "Singapore", "");
