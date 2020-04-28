@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class UserService {
+public class UserSearchService {
     @Autowired
     private UserDao userDao;
     @Autowired
