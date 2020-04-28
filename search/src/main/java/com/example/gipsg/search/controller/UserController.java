@@ -1,6 +1,7 @@
 package com.example.gipsg.search.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.gipsg.search.entity.Search;
 import com.example.gipsg.search.entity.User;
@@ -43,6 +44,12 @@ public class UserController {
     public String displayEdit(@PathVariable int id, Model model) {
         User user = userSearchService.findById(id);
         model.addAttribute("user", user);
+        Map<String, String> radioItemMap = searchItemService.getRadioItems();
+        radioItemMap.remove("1");
+        model.addAttribute("radioItems", radioItemMap);
+        List<String> checkItemList = searchItemService.getCheckItems();
+        checkItemList.remove(0);
+        model.addAttribute("checkItems", checkItemList);
         model.addAttribute("hobbies", viewService.getHobbies());
         return "user/edit_view";
     }

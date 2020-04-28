@@ -2,40 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Detail</title>
-    <link href="/css/view.css" rel="stylesheet"></link>
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
-    <meta charset="utf-8" />
+    <link href="/css/list.css" rel="stylesheet"></link>
+    <meta charset="utf-8"/>
 </head>
 <body>
-    <h1>User Detail</h1>
-    <form action="#" th:action="@{/user/list}" method="post">
-
-        <table th:object="${user}">
-            <tr>
-                <th class="cell_title">ID</th>
-                <td th:text="*{id}"></td>
-            </tr>
-            <tr>
-                <th class="cell_title">Name</th>
-                <td th:text="*{name}"></td>
-            </tr>
-            <tr>
-                <th class="cell_title">Nationality</th>
-                <td th:text="*{nationality}"></td>
-            </tr>
-            <tr>
-                <th class="cell_title">Office</th>
-                <td th:text="*{office}"></td>
-            </tr>
-            <tr >
-                <th class="cell_title">Hobbies</th>
-                <td th:text="*{hobby}"></td>
-            </tr>
-        </table>
-        <div class="btn_area_center">
-            <button type="submit" class="btn btn-default">Back</button>
-            <a class="btn btn-default" th:href="@{/user/{id}/edit(id=*{id})}">Edit</a>
-        </div>
-    </form>
+<h1>User Detail</h1>
+<form action="#" th:action="@{/user/list}" method="post" th:object="${user}">
+    <table>
+        <tr>
+            <th class="cell_title text-center">ID</th>
+            <td th:text="*{id}"></td>
+        </tr>
+        <tr>
+            <th class="cell_title text-center">Name</th>
+            <td th:text="*{name}"></td>
+        </tr>
+        <tr>
+            <th class="form-group text-center">Nationality</th>
+            <td th:text="*{nationality}"></td>
+        </tr>
+        <tr>
+            <th class="cell_title text-center">Office</th>
+            <td th:text="*{office}"></td>
+        </tr>
+        <tr>
+            <th class="cell_title text-center">Hobbies</th>
+            <td th:text="*{hobby}"></td>
+        </tr>
+    </table>
+    <div class="btn_area_center">
+        <button type="submit" class="btn btn-default">Back</button>
+        <a class="btn btn-default" th:href="@{/user/{id}/edit(id=*{id})}">Edit</a>
+    </div>
+</form>
 </body>
 </html>

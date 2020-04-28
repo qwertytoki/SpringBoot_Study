@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Detail</title>
-    <link href="/css/view.css" rel="stylesheet"></link>
+    <title>User Edit</title>
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+    <link href="/css/list.css" rel="stylesheet"></link>
     <meta charset="utf-8"/>
 </head>
 <body>
-<h1>User Detail</h1>
-<form action="#" th:action="@{/user/list}" method="post">
-
-    <table th:object="${user}">
+<h1>User Edit</h1>
+<form action="#" th:action="@{/user/{id}(id=*{id})}" method="post" th:object="${user}">
+    <table>
         <tr>
-            <th class="cell_title">ID</th>
+            <th class="cell_title text-center">ID</th>
             <td input th:text="*{id}"></td>
         </tr>
         <tr>
-            <th class="cell_title">Name</th>
+            <th class="cell_title text-center">Name</th>
             <td><input type="text" th:field="*{name}"></td>
         </tr>
-        <tr>
-            <th class="cell_title">Nationality</th>
-            <td th:text="*{nationality}"></td>
+
+        <tr class="form-group text-center">
+            <th class="align-middle">Nationality</th>
+            <td>
+                <div th:each="item : ${radioItems}" class="form-check-inline">
+                    <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.value}"
+                           th:text="${item.value}" class="form-check-input"/>
+                </div>
+            </td>
+        </tr>
+        <tr class="form-group text-center">
+            <th class="align-middle">Office</th>
+            <td>
+                <div th:each="item : ${checkItems}" class="form-check-inline">
+                    <input type="radio" th:field="*{office}" th:value="${item}" th:text="${item}"/>
+                </div>
+            </td>
         </tr>
         <tr>
-            <th class="cell_title">Office</th>
-            <td th:text="*{office}"></td>
-        </tr>
-        <tr>
-            <th class="cell_title">Hobby</th>
+            <th class="align-middle text-center">Hobby</th>
             <td>
                 <div th:each="hobby : ${hobbies}">
                     <input type="button" th:field="*{hobby}" th:value="${hobby}"/>
