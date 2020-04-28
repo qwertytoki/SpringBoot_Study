@@ -22,7 +22,7 @@ public class ViewService {
         List<String> hobbyList= new ArrayList<>();
         hobbyList.add("Workout");
         hobbyList.add("Buffet");
-        hobbyList.add("Drama");
+        hobbyList.add("Korean Drama");
         return hobbyList;
     }
     public List<User> updateUserInfo(User updUser){

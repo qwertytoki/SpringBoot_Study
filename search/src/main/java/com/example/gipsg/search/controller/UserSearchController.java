@@ -11,6 +11,7 @@ import com.example.gipsg.search.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -55,7 +56,7 @@ public class UserSearchController {
         checkItemList.remove(0);
         model.addAttribute("checkItems", checkItemList);
         model.addAttribute("hobbies", viewService.getHobbies());
-        if(!user.getHobby().equals("")){
+        if(!StringUtils.isEmpty(user.getHobby())){
             model.addAttribute("selectedHobbies", user.getHobby().split(","));
         }
         return "user/edit_view";
