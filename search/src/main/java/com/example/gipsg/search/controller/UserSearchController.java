@@ -35,7 +35,11 @@ public class UserSearchController {
 
     @RequestMapping("/user/{id}")
     public String displayView(@PathVariable String id, @ModelAttribute("user") User user, Model model) {
-        user = userSearchService.findById(id);
+        if(user.getName()!=null){
+            viewService.updateUserInfo(user);
+        }else{
+            user = userSearchService.findById(id);
+        }
         model.addAttribute("user", user);
         return "user/view";
     }
