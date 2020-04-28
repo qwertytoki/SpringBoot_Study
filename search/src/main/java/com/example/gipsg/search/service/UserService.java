@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 @Service
-public class UserSearchService {
+public class UserService {
     @Autowired
     private UserDao userDao;
     @Autowired
@@ -29,10 +29,6 @@ public class UserSearchService {
         if (!StringUtils.isEmpty(nationalityId)) {
             userList = searchByNationality(nationalityId, userList);
         }
-        String office = search.getOffice();
-        if (!StringUtils.isEmpty(office)) {
-            userList = searchByOffice(office, userList);
-        }
         return userList;
     }
 
@@ -47,25 +43,12 @@ public class UserSearchService {
     }
 
     private List<User> searchByNationality(String nationalityId, List<User> userList) {
-        if (nationalityId.equals("1")) return userList;
+        if(nationalityId.equals("1"))return userList;
         List<User> searchedList = new ArrayList<>();
         String nationality = searchItemService.getRadioItems().get(nationalityId);
         for (User user : userList) {
-            if (user.getNationality().equalsIgnoreCase(nationality)) {
+            if(user.getNationality().equalsIgnoreCase(nationality)){
                 searchedList.add(user);
-            }
-        }
-        return searchedList;
-    }
-
-    private List<User> searchByOffice(String checkedOffice, List<User> userList) {
-        List<User> searchedList = new ArrayList<>();
-        String[] officeArray = checkedOffice.split(",");
-        for (String office : officeArray) {
-            for (User user : userList) {
-                if (user.getOffice().equalsIgnoreCase(office)) {
-                    searchedList.add(user);
-                }
             }
         }
         return searchedList;
