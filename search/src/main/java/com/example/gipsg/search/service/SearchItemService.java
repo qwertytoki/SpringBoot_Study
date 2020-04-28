@@ -32,4 +32,12 @@ public class SearchItemService {
         checkItemList.add("Tokyo");
         return checkItemList;
     }
+
+    // public Map<String, String> getCheckItems() {
+    //     Map<String, String> selectMap = new LinkedHashMap<String, String>();
+    //     selectMap.put("1", "All");
+    //     selectMap.put("2", "Singapore");
+    //     selectMap.put("3", "Tokyo");
+    //     return selectMap;
+    // }
 }

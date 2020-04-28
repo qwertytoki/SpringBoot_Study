@@ -61,6 +61,7 @@ public class UserSearchService {
     private List<User> searchByOffice(String checkedOffice, List<User> userList) {
         List<User> searchedList = new ArrayList<>();
         String[] officeArray = checkedOffice.split(",");
+        if (officeArray[0].equalsIgnoreCase("ALL")) return userList;
         for (String office : officeArray) {
             for (User user : userList) {
                 if (user.getOffice().equalsIgnoreCase(office)) {
