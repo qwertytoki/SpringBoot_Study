@@ -76,10 +76,10 @@ public class UserSearchService {
         return userDao.getUsers();
     }
 
-    public User findById(int id) {
+    public User findById(String id) {
         List<User> userList = userDao.getUsers();
         for (User user : userList) {
-            if (user.getId() == id) return user;
+            if (user.getId().equals(id)) return user;
         }
         throw new IllegalArgumentException("Parameter's id is not exist. id:" + id);
     }

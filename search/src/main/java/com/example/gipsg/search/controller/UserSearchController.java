@@ -34,14 +34,14 @@ public class UserSearchController {
     }
 
     @RequestMapping("/user/{id}")
-    public String displayView(@PathVariable int id, Model model) {
-        User user = userSearchService.findById(id);
+    public String displayView(@PathVariable String id, @ModelAttribute("user") User user, Model model) {
+        user = userSearchService.findById(id);
         model.addAttribute("user", user);
         return "user/view";
     }
 
     @RequestMapping("/user/{id}/edit")
-    public String displayEdit(@PathVariable int id, Model model) {
+    public String displayEdit(@PathVariable String id, Model model) {
         User user = userSearchService.findById(id);
         model.addAttribute("user", user);
         Map<String, String> radioItemMap = searchItemService.getRadioItems();
