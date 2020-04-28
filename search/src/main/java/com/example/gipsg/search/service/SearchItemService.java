@@ -15,7 +15,7 @@ import java.util.Map;
 @Service
 public class SearchItemService {
 
-    public Map<String,String> getRadioItems(){
+    public Map<String, String> getRadioItems() {
         Map<String, String> selectMap = new LinkedHashMap<String, String>();
         selectMap.put("1", "All");
         selectMap.put("2", "Japan");
@@ -24,8 +24,9 @@ public class SearchItemService {
         selectMap.put("5", "Sweden");
         return selectMap;
     }
-    public List<String> getCheckItems(){
-        List<String> checkItemList= new ArrayList<>();
+
+    public List<String> getCheckItems() {
+        List<String> checkItemList = new ArrayList<>();
         checkItemList.add("All");
         checkItemList.add("Singapore");
         checkItemList.add("Tokyo");
