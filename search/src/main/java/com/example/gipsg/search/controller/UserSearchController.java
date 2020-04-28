@@ -55,6 +55,9 @@ public class UserSearchController {
         checkItemList.remove(0);
         model.addAttribute("checkItems", checkItemList);
         model.addAttribute("hobbies", viewService.getHobbies());
+        if(!user.getHobby().equals("")){
+            model.addAttribute("selectedHobbies", user.getHobby().split(","));
+        }
         return "user/edit_view";
     }
 }

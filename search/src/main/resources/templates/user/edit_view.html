@@ -33,15 +33,22 @@
             <th class="align-middle">Office</th>
             <td>
                 <div th:each="item : ${checkItems}" class="form-check-inline">
-                    <input type="radio" th:field="*{office}" th:value="${item}" th:text="${item}" class="form-check-input"/>
+                    <input type="radio" th:field="*{office}" th:value="${item}" th:text="${item}"
+                           class="form-check-input"/>
                 </div>
             </td>
         </tr>
         <tr>
-            <th class="align-middle">Hobby</th>
+            <th class="align-middle">Hobbies</th>
             <td>
                 <div th:each="hobby : ${hobbies}">
-                    <input type="button" th:field="*{hobby}" th:value="${hobby}"/>
+                    <input id="btn" type="button" th:field="*{hobby}" th:value="${hobby}"/>
+                </div>
+            </td>
+            <th class="align-middle">Selected Hobbies</th>
+            <td>
+                <div th:each="hobby : ${selectedHobbies}">
+                    <input id="btn2" type="button" th:field="*{hobby}" th:value="${hobby}"/>
                 </div>
             </td>
         </tr>
@@ -51,5 +58,12 @@
         <button type="submit" class="btn btn-default">Save</button>
     </div>
 </form>
+<script>
+    $(function () {
+        $('#btn').click(function (e) {
+            $(this).value("hoge");
+        });
+    });
+</script>
 </body>
 </html>
