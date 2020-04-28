@@ -29,16 +29,12 @@
             </tr>
             <tr >
                 <th class="cell_title">Hobbies</th>
-                <td>
-                    <div th:each="hobby : ${hobbies}">
-                        <input type="button"  th:field="*{hobby}" th:value="${hobby}" />
-                    </div>
-                </td>
+                <td th:text="*{hobby}"></td>
             </tr>
         </table>
         <div class="btn_area_center">
             <button type="submit" class="btn btn-default">Back</button>
-            <button type="submit" class="btn btn-default">Edit</button>
+            <a class="btn btn-default" th:href="@{/user/{id}/edit(id=*{id})}">Edit</a>
         </div>
     </form>
 </body>
