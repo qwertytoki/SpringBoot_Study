@@ -26,7 +26,7 @@ public class ViewService {
         List<String> hobbyList = new ArrayList<>();
         hobbyList.add("Workout");
         hobbyList.add("Buffet");
-        hobbyList.add("Korean Drama");
+        hobbyList.add("KoreanDrama");
         List<String> filteredHobbyList = new ArrayList<>();
         for (String hobby : hobbyList) {
             boolean isSelected = false;
