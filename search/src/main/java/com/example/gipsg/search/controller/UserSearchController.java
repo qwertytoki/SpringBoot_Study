@@ -55,7 +55,7 @@ public class UserSearchController {
         List<String> checkItemList = searchItemService.getCheckItems();
         checkItemList.remove(0);
         model.addAttribute("checkItems", checkItemList);
-        model.addAttribute("hobbies", viewService.getHobbies());
+        model.addAttribute("hobbies", viewService.getHobbies(user.getHobby()));
         if(!StringUtils.isEmpty(user.getHobby())){
             model.addAttribute("selectedHobbies", user.getHobby().split(","));
         }

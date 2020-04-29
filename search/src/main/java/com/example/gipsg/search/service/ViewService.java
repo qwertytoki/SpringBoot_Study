@@ -18,19 +18,34 @@ public class ViewService {
     @Autowired
     UserDao userDao;
 
-    public List<String> getHobbies(){
-        List<String> hobbyList= new ArrayList<>();
+    public List<String> getHobbies(String selectedHobbies) {
+        String[] hobbyArray = new String[1];
+        if (!StringUtils.isEmpty(selectedHobbies)) {
+            hobbyArray = selectedHobbies.split(",");
+        }
+        List<String> hobbyList = new ArrayList<>();
         hobbyList.add("Workout");
         hobbyList.add("Buffet");
         hobbyList.add("Korean Drama");
-        return hobbyList;
+        List<String> filteredHobbyList = new ArrayList<>();
+        for (String hobby : hobbyList) {
+            boolean isSelected = false;
+            for (String selectedHobby : hobbyArray) {
+                if (selectedHobby.equals(hobby)) {
+                    isSelected = true;
+                }
+            }
+            if (!isSelected) filteredHobbyList.add(hobby);
+        }
+        return filteredHobbyList;
     }
-    public List<User> updateUserInfo(User updUser){
+
+    public List<User> updateUserInfo(User updUser) {
         List<User> userList = new ArrayList<>();
-        for(User user : userDao.getUsers()){
-            if(user.getId().equals(updUser.getId())){
+        for (User user : userDao.getUsers()) {
+            if (user.getId().equals(updUser.getId())) {
                 userList.add(updUser);
-            }else{
+            } else {
                 userList.add(user);
             }
         }
