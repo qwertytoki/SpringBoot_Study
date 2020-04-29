@@ -10,15 +10,17 @@
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a href="/user/list?lang=en"  th:href="@{/user/list?lang=en}">(English)</a>
+    <a href="/user/list?lang=en" th:href="@{/user/list?lang=en}">(English)</a>
     &nbsp;|&nbsp;
-    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}" >(日本語)</a>
+    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(日本語)</a>
 </div>
 <h1 th:text="#{userInfo}">User Information</h1>
 <form action="#" th:action="@{/user/list}" th:object="${search}">
     <table>
         <tr>
-            <th class="cell_title" th:text="#{name}">Name<LocaleResolver/th>
+            <th class="cell_title" th:text="#{name}">Name
+                <LocaleResolver
+                /th>
             <td class="text-left"><input type="text" th:field="*{name}"></td>
         </tr>
         <tr class="form-group">
@@ -34,7 +36,8 @@
             <th class="align-middle" th:text="#{office}">Office</th>
             <td>
                 <div th:each="item : ${checkItems}" class="form-check-inline">
-                    <input type="checkbox" th:field="*{office}"  th:value="${item}" th:text="${item}"/>
+                    <input type="checkbox" th:field="*{office}" th:value="${item}" th:text="${item}"
+                           class="form-check-input"/>
                 </div>
             </td>
         <tr class="form-group">

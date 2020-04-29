@@ -45,7 +45,6 @@
                     <input class="btn" type="text" th:value="${item}" />
                 </div>
             </td>
-            <th class="align-middle" th:text="#{selectedHobbies}">Selected Hobbies</th>
             <td id='selectedHobbies'>
                 <div th:each="item : ${selectedHobbies}" class="selectedHobby">
                     <input class="btn" type="text"   th:field="*{hobby}" />
@@ -53,7 +52,7 @@
             </td>
         </tr>
     </table>
-    <div class="btn_area_center">
+    <div class="center">
         <a class="btn btn-default" th:href="@{/user/{id}(id=*{id})}" th:text="#{back}">Back</a>
         <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>
     </div>
