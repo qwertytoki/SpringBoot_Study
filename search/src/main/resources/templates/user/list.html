@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Info</title>
+    <title th:text="#{userInfo}">User Info</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -12,19 +12,17 @@
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
     <a href="/user/list?lang=en"  th:href="@{/user/list?lang=en}">(English)</a>
     &nbsp;|&nbsp;
-    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(Japanese)</a>
+    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}" >(日本語)</a>
 </div>
-<h1>User Information</h1>
-<span th:text="#{message}"></span>
-<strong th:utext="#{hello}"></strong>
+<h1 th:text="#{userInfo}">User Information</h1>
 <form action="#" th:action="@{/user/list}" th:object="${search}">
     <table>
         <tr>
-            <th class="cell_title">Name<LocaleResolver/th>
+            <th class="cell_title" th:text="#{name}">Name<LocaleResolver/th>
             <td class="text-left"><input type="text" th:field="*{name}"></td>
         </tr>
         <tr class="form-group">
-            <th class="align-middle">Nationality</th>
+            <th class="align-middle" th:text="#{nationality}">Nationality</th>
             <td>
                 <div th:each="item : ${radioItems}" class="form-check-inline">
                     <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.key}"
@@ -33,25 +31,25 @@
             </td>
         </tr>
         <tr class="form-group">
-            <th class="align-middle">Office</th>
+            <th class="align-middle" th:text="#{office}">Office</th>
             <td>
                 <div th:each="item : ${checkItems}" class="form-check-inline">
-                    <input type="checkbox" th:field="*{office}" th:value="${item}" th:text="${item}"/>
+                    <input type="checkbox" th:field="*{office}"  th:value="${item}" th:text="${item}"/>
                 </div>
             </td>
         <tr class="form-group">
     </table>
-    <div class="btn_area_center text-right"><input type="submit" value="Search" class="btn-primary"></div>
+    <div class="btn_area_center text-right"><input type="submit" th:value="#{search}" class="btn-primary"></div>
 </form>
 <table>
     <thead>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Nationality</th>
-        <th>Office</th>
-        <th>Hobby</th>
-        <th>Link</th>
+        <th th:text="#{name}">Name</th>
+        <th th:text="#{nationality}">Nationality</th>
+        <th th:text="#{office}">Office</th>
+        <th th:text="#{hobbies}">Hobby</th>
+        <th th:text="#{link}">Link</th>
     </tr>
     </thead>
     <tbody>

@@ -29,14 +29,14 @@ public class UserDao {
 
     private List<User> getAllUser() {
         List<User> userList = new ArrayList<>();
-        User user1 = new User("1", "Shuya", "Japan", "Singapore", "Workout");
+        User user1 = new User("1", "Shuyeah", "Japan", "Singapore", "Workout");
         User user2 = new User("2", "Nook", "Singapore", "Singapore", "");
         User user3 = new User("3", "Sowei", "China", "Singapore", "");
         User user4 = new User("4", "Dave", "Sweden", "Singapore", "");
         User user5 = new User("5", "Kick", "Singapore", "Singapore", "");
         User user6 = new User("6", "Pearl", "Singapore", "Singapore", "");
-        User user7 = new User("7", "Shira", "Japan", "Tokyo", "");
-        User user8 = new User("8", "Alex", "Belgium", "Tokyo", "");
+        User user7 = new User("7", "Shirah", "Japan", "Tokyo", "");
+        User user8 = new User("8", "Alexis", "Belgium", "Tokyo", "");
         User user9 = new User("9", "Neehaa", "India", "Tokyo", "");
         userList.add(user1);
         userList.add(user2);
