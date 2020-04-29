@@ -2,6 +2,7 @@ package com.example.gipsg.search.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.example.gipsg.search.entity.Search;
@@ -10,6 +11,7 @@ import com.example.gipsg.search.service.SearchItemService;
 import com.example.gipsg.search.service.UserSearchService;
 import com.example.gipsg.search.service.ViewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -24,9 +26,12 @@ public class UserSearchController {
     private SearchItemService searchItemService;
     @Autowired
     private ViewService viewService;
+    @Autowired
+    private MessageSource messageSource;
 
     @RequestMapping("/user/list")
     public String displayList(@ModelAttribute("search") Search search, Model model) {
+        String string = messageSource.getMessage("hello", new String[] {}, Locale.JAPAN);
         List<User> userList = userSearchService.search(search);
         model.addAttribute("search", search);
         model.addAttribute("userlist", userList);

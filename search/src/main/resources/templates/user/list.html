@@ -9,11 +9,18 @@
     <meta charset="utf-8"/>
 </head>
 <body>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a href="/user/list?lang=en"  th:href="@{/user/list?lang=en}">(English)</a>
+    &nbsp;|&nbsp;
+    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(Japanese)</a>
+</div>
 <h1>User Information</h1>
+<span th:text="#{message}"></span>
+<strong th:utext="#{hello}"></strong>
 <form action="#" th:action="@{/user/list}" th:object="${search}">
     <table>
         <tr>
-            <th class="cell_title">Name</th>
+            <th class="cell_title">Name<LocaleResolver/th>
             <td class="text-left"><input type="text" th:field="*{name}"></td>
         </tr>
         <tr class="form-group">
