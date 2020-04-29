@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Edit</title>
+    <title th:text="#{userEdit}">User Edit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
@@ -9,7 +9,7 @@
     <meta charset="utf-8"/>
 </head>
 <body>
-<h1>User Edit</h1>
+<h1 th:text="#{userEdit}">User Edit</h1>
 <form action="#" th:action="@{/user/{id}(id=*{id})}" method="post" th:object="${user}">
     <table>
         <tr>
@@ -17,11 +17,11 @@
             <td input th:text="*{id}"></td>
         </tr>
         <tr>
-            <th class="cell_title">Name</th>
+            <th class="cell_title" th:text="#{name}">Name</th>
             <td class="text-left"><input type="text" th:field="*{name}"></td>
         </tr>
         <tr class="form-group">
-            <th class="align-middle">Nationality</th>
+            <th class="align-middle" th:text="#{nationality}">Nationality</th>
             <td>
                 <div th:each="item : ${radioItems}" class="form-check-inline">
                     <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.value}"
@@ -30,7 +30,7 @@
             </td>
         </tr>
         <tr class="form-group">
-            <th class="align-middle">Office</th>
+            <th class="align-middle" th:text="#{office}">Office</th>
             <td>
                 <div th:each="item : ${checkItems}" class="form-check-inline">
                     <input type="radio" th:field="*{office}" th:value="${item}" th:text="${item}"
@@ -39,13 +39,13 @@
             </td>
         </tr>
         <tr>
-            <th class="align-middle">Hobbies</th>
+            <th class="align-middle" th:text="#{hobbies}">Hobbies</th>
             <td id='hobbies'>
                 <div th:each="item : ${hobbies}" class="hobby" >
                     <input class="btn" type="text" th:value="${item}" />
                 </div>
             </td>
-            <th class="align-middle">Selected Hobbies</th>
+            <th class="align-middle" th:text="#{selectedHobbies}">Selected Hobbies</th>
             <td id='selectedHobbies'>
                 <div th:each="item : ${selectedHobbies}" class="selectedHobby">
                     <input class="btn" type="text"   th:field="*{hobby}" />
@@ -54,8 +54,8 @@
         </tr>
     </table>
     <div class="btn_area_center">
-        <a class="btn btn-default" th:href="@{/user/{id}(id=*{id})}">Back</a>
-        <button type="submit" class="btn btn-default">Save</button>
+        <a class="btn btn-default" th:href="@{/user/{id}(id=*{id})}" th:text="#{back}">Back</a>
+        <button type="submit" class="btn btn-default" th:text="#{save}">Save</button>
     </div>
 </form>
 <script>
