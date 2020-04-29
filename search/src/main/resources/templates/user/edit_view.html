@@ -48,7 +48,7 @@
             <th class="align-middle">Selected Hobbies</th>
             <td id='selectedHobbies'>
                 <div th:each="item : ${selectedHobbies}" class="selectedHobby">
-                    <input class="btn" type="text" th:field="*{hobby}" th:value="${item}"/>
+                    <input class="btn" type="text"   th:field="*{hobby}"/>
                 </div>
             </td>
         </tr>
@@ -75,7 +75,7 @@
             $(this).remove();
         });
         $('.selectedHobby').click(function (e) {
-            let add_contents = '<div class="selectedHobby btn"><input class="hobbyGenerated btn" type="text" value=';
+            let add_contents = '<div class="selectedHobby"><input class="hobbyGenerated btn" type="text" value=';
             add_contents += this.children[0].value;
             add_contents += ' /></div>';
             $(add_contents).appendTo("#hobbies")

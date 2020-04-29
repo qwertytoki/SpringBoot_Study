@@ -19,7 +19,7 @@ public class ViewService {
     UserDao userDao;
 
     public List<String> getHobbies(String selectedHobbies) {
-        String[] hobbyArray = new String[1];
+        String[] hobbyArray = {""};
         if (!StringUtils.isEmpty(selectedHobbies)) {
             hobbyArray = selectedHobbies.split(",");
         }

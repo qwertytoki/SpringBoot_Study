@@ -1,5 +1,6 @@
 package com.example.gipsg.search.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +58,8 @@ public class UserSearchController {
         model.addAttribute("checkItems", checkItemList);
         model.addAttribute("hobbies", viewService.getHobbies(user.getHobby()));
         if(!StringUtils.isEmpty(user.getHobby())){
-            model.addAttribute("selectedHobbies", user.getHobby().split(","));
+            List<String> selectedHobbies = Arrays.asList(user.getHobby().split(","));
+            model.addAttribute("selectedHobbies", selectedHobbies);
         }
         return "user/edit_view";
     }
