@@ -14,22 +14,25 @@ import lombok.Data;
 @Entity
 @Data
 @AllArgsConstructor
-@Table(name="user")
+@Table(name = "user")
 public class User implements Serializable {
 
-    @Column(name="id")
+    public User() {
+    }
+
+    @Column(name = "id")
     private String id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="nationality")
+    @Column(name = "nationality")
     private String nationality;
 
-    @Column(name="office")
+    @Column(name = "office")
     private String office;
 
-    @Column(name="hobby")
+    @Column(name = "hobby")
     private String hobby;
 
 }

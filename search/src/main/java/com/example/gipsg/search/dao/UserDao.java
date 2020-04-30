@@ -1,8 +1,12 @@
 package com.example.gipsg.search.dao;
 
 import com.example.gipsg.search.entity.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -18,7 +22,13 @@ public class UserDao {
     public List<User> getUsers() {
         Object userList = session.getAttribute("userDB");
         if (Objects.isNull(userList)) {
-            userList = getAllUser();
+            String json = getAllUserByJson();
+            try {
+                userList = new ObjectMapper().readValue(json, new TypeReference<List<User>>() {
+                });
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
         return (List<User>) userList;
     }
@@ -27,26 +37,19 @@ public class UserDao {
         session.setAttribute("userDB", userList);
     }
 
-    private List<User> getAllUser() {
-        List<User> userList = new ArrayList<>();
-        User user1 = new User("1", "Shuyeah", "Japan", "Singapore", "Workout");
-        User user2 = new User("2", "Nook", "Singapore", "Singapore", "");
-        User user3 = new User("3", "Sowei", "China", "Singapore", "");
-        User user4 = new User("4", "Dave", "Sweden", "Singapore", "");
-        User user5 = new User("5", "Kick", "Singapore", "Singapore", "");
-        User user6 = new User("6", "Pearl", "Singapore", "Singapore", "");
-        User user7 = new User("7", "Shirah", "Japan", "Tokyo", "");
-        User user8 = new User("8", "Alexis", "Belgium", "Tokyo", "");
-        User user9 = new User("9", "Neehaa", "India", "Tokyo", "");
-        userList.add(user1);
-        userList.add(user2);
-        userList.add(user3);
-        userList.add(user4);
-        userList.add(user5);
-        userList.add(user6);
-        userList.add(user7);
-        userList.add(user8);
-        userList.add(user9);
-        return userList;
+    public User getUser(@RequestBody User user) {
+        return user;
+    }
+
+    private String getAllUserByJson() {
+        return "[{\"id\":\"1\", \"name\":\"shuyeah\", \"nationality\":\"Japan\", \"office\":\"Singapore\", \"hobby\":\"Workout\"},"
+                + "{\"id\":\"2\", \"name\":\"Nook\", \"nationality\":\"Singapore\", \"office\":\"Singapore\", \"hobby\":\"Buffet\"},"
+                + "{\"id\":\"3\", \"name\":\"Sowei\", \"nationality\":\"China\", \"office\":\"Singapore\", \"hobby\":\"\"},"
+                + "{\"id\":\"4\", \"name\":\"Dave\", \"nationality\":\"Sweden\", \"office\":\"Singapore\", \"hobby\":\"KoreanDrama\"},"
+                + "{\"id\":\"5\", \"name\":\"Kick\", \"nationality\":\"Singapore\", \"office\":\"Singapore\", \"hobby\":\"\"},"
+                + "{\"id\":\"6\", \"name\":\"Pearl\", \"nationality\":\"Singapore\", \"office\":\"Singapore\", \"hobby\":\"\"},"
+                + "{\"id\":\"7\", \"name\":\"Shirah\", \"nationality\":\"Japan\", \"office\":\"Tokyo\", \"hobby\":\"\"},"
+                + "{\"id\":\"8\", \"name\":\"Alexis\", \"nationality\":\"Belgium\", \"office\":\"Tokyo\", \"hobby\":\"\"},"
+                + "{\"id\":\"9\", \"name\":\"Neehaa\", \"nationality\":\"India\", \"office\":\"Tokyo\", \"hobby\":\"\"}]";
     }
 }
