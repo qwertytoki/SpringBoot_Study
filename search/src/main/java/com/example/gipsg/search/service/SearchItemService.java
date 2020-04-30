@@ -22,6 +22,8 @@ public class SearchItemService {
         selectMap.put("3", "China");
         selectMap.put("4", "Singapore");
         selectMap.put("5", "Sweden");
+        selectMap.put("6", "India");
+        selectMap.put("7", "Belgium");
         return selectMap;
     }
 

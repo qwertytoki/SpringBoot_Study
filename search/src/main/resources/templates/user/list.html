@@ -37,7 +37,7 @@
     <h1 th:text="#{userInfo}">User Information</h1>
     <form action="#" th:action="@{/user/list}" th:object="${search}">
         <div class="form-group">
-            <label th:text="#{name}">Email address</label>
+            <label th:text="#{name}"></label>
             <input type="text" class="form-control" th:field="*{name}">
         </div>
         <label th:text="#{nationality}"></label>

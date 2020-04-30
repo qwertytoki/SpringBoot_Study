@@ -12,42 +12,46 @@
     <body>
     <h1 th:text="#{userEdit}">User Edit</h1>
     <form action="#" th:action="@{/user/{id}(id=*{id})}" method="post" th:object="${user}">
-        <table class="table table-bordered">
+        <table class="table table-bordered text-center">
             <tr class="d-flex">
-                <th scope="row" class="col-sm-2 ">ID</th>
+                <th scope="row" class="col-sm-2 text-center">ID</th>
                 <td colspan="2" input th:text="*{id}" class="col-sm-10"></td>
             </tr>
             <tr class="d-flex">
-                <th scope="row" class="col-sm-2" th:text="#{name}">Name</th>
-                <td colspan="2" class="text-left col-sm-10"><input type="text" th:field="*{name}"></td>
+                <th scope="row" class="col-sm-2 text-center" th:text="#{name}">Name</th>
+                <td colspan="2" class="text-left col-sm-10">
+                    <input type="text" class="form-control" th:field="*{name}">
+                </td>
             </tr>
             <tr class="d-flex">
-                <th  scope="row" class="col-sm-2" th:text="#{nationality}">Nationality</th>
+                <th scope="row" class="col-sm-2 text-center" th:text="#{nationality}">Nationality</th>
                 <td colspan="2" class="col-sm-10">
-                    <div th:each="item : ${radioItems}" class="form-check-inline">
+                    <div class="form-check form-check-inline" th:each="item : ${radioItems}">
                         <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.value}"
                                th:text="${item.value}" class="form-check-input"/>
                     </div>
                 </td>
             </tr>
             <tr class="d-flex">
-                <th scope="row" class="col-sm-2" th:text="#{office}">Office</th>
+                <th scope="row" class="col-sm-2 text-center" th:text="#{office}">Office</th>
                 <td colspan="2" class="col-sm-10">
-                    <div th:each="item : ${checkItems}" class="form-check-inline col-sm-9">
-                        <input type="radio" th:field="*{office}" th:value="${item}" th:text="${item}"
-                               class="form-check-input"/>
+                    <div class="form-check form-check-inline" th:each="item : ${checkItems}">
+                        <input class="form-check-input" type="radio" th:field="*{office}" th:value="${item}">
+                        <label class="form-check-label" th:text="${item}"></label>
                     </div>
                 </td>
             </tr>
             <tr class="d-flex">
-                <th scope="row" class="col-sm-2" th:text="#{hobbies}">Hobbies</th>
+                <div class="col-sm-5">
+                    <th scope="row" class="col-sm-2 text-center" th:text="#{hobbies}">Hobbies</th>
+                </div>
                 <td id='hobbies' class="col-sm-5">
-                    <div th:each="item : ${hobbies}" class="hobby col-sm-4">
+                    <div th:each="item : ${hobbies}" class="hobby col-sm-4 text-center">
                         <input class="btn" type="text" th:value="${item}"/>
                     </div>
                 </td>
                 <td id='selectedHobbies' class="col-sm-5">
-                    <div th:each="item : ${selectedHobbies}" class="selectedHobby col-sm-4">
+                    <div th:each="item : ${selectedHobbies}" class="selectedHobby col-sm-4 text-center">
                         <input class="btn" type="text" th:field="*{hobby}"/>
                     </div>
                 </td>
