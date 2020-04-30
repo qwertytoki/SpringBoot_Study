@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title th:text="#{userInfo}">User Info</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <link href="/css/list.css" rel="stylesheet"></link>
-    <meta charset="utf-8"/>
-</head>
-<body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a href="/user/list?lang=en" th:href="@{/user/list?lang=en}">(English)</a>
-    &nbsp;|&nbsp;
-    <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(日本語)</a>
-</div>
-<h1 th:text="#{userInfo}">User Information</h1>
-<form action="#" th:action="@{/user/list}" th:object="${search}">
-    <table>
+<div class="container">
+    <head>
+        <title th:text="#{userInfo}">User Info</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript"
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <link href="/css/list.css" rel="stylesheet"></link>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+    <div>
+        <a href="/user/list?lang=en" th:href="@{/user/list?lang=en}">(English)</a>
+        &nbsp;|&nbsp;
+        <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(日本語)</a>
+    </div>
+    <h1 th:text="#{userInfo}">User Information</h1>
+    <form action="#" th:action="@{/user/list}" th:object="${search}">
+        <table class="table table-sm">
+            <tr>
+                <th class="cell_title" th:text="#{name}">Name</th>
+                <td class="text-left"><input type="text" th:field="*{name}"></td>
+            </tr>
+            <tr class="form-group">
+                <th class="align-middle" th:text="#{nationality}">Nationality</th>
+                <td>
+                    <div th:each="item : ${radioItems}" class="form-check-inline">
+                        <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.key}"
+                               th:text="${item.value}" class="form-check-input"/>
+                    </div>
+                </td>
+            </tr>
+            <tr class="form-group">
+                <th class="align-middle" th:text="#{office}">Office</th>
+                <td>
+                    <div th:each="item : ${checkItems}" class="form-check-inline">
+                        <input type="checkbox" th:field="*{office}" th:value="${item}" th:text="${item}"
+                               class="form-check-input"/>
+                    </div>
+                </td>
+            <tr class="form-group">
+        </table>
+        <div class="btn_area_center text-right"><input type="submit" th:value="#{search}" class="btn-primary"></div>
+    </form>
+    <table class="table table-hover table-striped">
+        <thead>
         <tr>
-            <th class="cell_title" th:text="#{name}">Name
-                <LocaleResolver
-                /th>
-            <td class="text-left"><input type="text" th:field="*{name}"></td>
+            <th>ID</th>
+            <th th:text="#{name}">Name</th>
+            <th th:text="#{nationality}">Nationality</th>
+            <th th:text="#{office}">Office</th>
+            <th th:text="#{hobbies}">Hobby</th>
+            <th th:text="#{link}">Link</th>
         </tr>
-        <tr class="form-group">
-            <th class="align-middle" th:text="#{nationality}">Nationality</th>
-            <td>
-                <div th:each="item : ${radioItems}" class="form-check-inline">
-                    <input type="radio" name="selectedRadio" th:field="*{nationality}" th:value="${item.key}"
-                           th:text="${item.value}" class="form-check-input"/>
-                </div>
-            </td>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${userlist}" th:object="${user}">
+            <td class="center" th:text="*{id}"></td>
+            <td class="center" th:text="*{name}"></td>
+            <td class="center" th:text="*{nationality}"></td>
+            <td class="center" th:text="*{office}"></td>
+            <td class="center" th:text="*{hobby}"></td>
+            <td class="center"><a th:href="@{/user/{id}(id=*{id})}">Detail</a></td>
         </tr>
-        <tr class="form-group">
-            <th class="align-middle" th:text="#{office}">Office</th>
-            <td>
-                <div th:each="item : ${checkItems}" class="form-check-inline">
-                    <input type="checkbox" th:field="*{office}" th:value="${item}" th:text="${item}"
-                           class="form-check-input"/>
-                </div>
-            </td>
-        <tr class="form-group">
+        </tbody>
     </table>
-    <div class="btn_area_center text-right"><input type="submit" th:value="#{search}" class="btn-primary"></div>
-</form>
-<table>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th th:text="#{name}">Name</th>
-        <th th:text="#{nationality}">Nationality</th>
-        <th th:text="#{office}">Office</th>
-        <th th:text="#{hobbies}">Hobby</th>
-        <th th:text="#{link}">Link</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${userlist}" th:object="${user}">
-        <td class="center" th:text="*{id}"></td>
-        <td class="center" th:text="*{name}"></td>
-        <td class="center" th:text="*{nationality}"></td>
-        <td class="center" th:text="*{office}"></td>
-        <td class="center" th:text="*{hobby}"></td>
-        <td class="center"><a th:href="@{/user/{id}(id=*{id})}">Detail</a></td>
-    </tr>
-    </tbody>
-</table>
-</body>
+    </body>
+</div>
 </html>
