@@ -1,24 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<!--<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">-->
-<!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--        <ul class="navbar-nav mr-auto">-->
-<!--            <li class="nav-item dropdown">-->
-<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"-->
-<!--                   aria-haspopup="true" aria-expanded="false">-->
-<!--                    Dropdown-->
-<!--                </a>-->
-<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                    <a class="dropdown-item" href="#">Action</a>-->
-<!--                    <a class="dropdown-item" href="#">Another action</a>-->
-<!--                    <div class="dropdown-divider"></div>-->
-<!--                    <a class="dropdown-item" href="#">Something else here</a>-->
-<!--                </div>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--</nav>-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="container">
-
     <head>
         <title th:text="#{userInfo}">User Info</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -27,12 +10,11 @@
                 src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
         <meta charset="utf-8"/>
     </head>
-
     <body>
-    <div>
-        <a href="/user/list?lang=en" th:href="@{/user/list?lang=en}">(English)</a>
+    <div class="text-right">
+        <a href="/user/list?lang=en">English</a>
         &nbsp;|&nbsp;
-        <a href="/user/list?lang=ja" th:href="@{/user/list?lang=ja}">(日本語)</a>
+        <a href="/user/list?lang=ja" >日本語</a>
     </div>
     <h1 th:text="#{userInfo}">User Information</h1>
     <form action="#" th:action="@{/user/list}" th:object="${search}">
