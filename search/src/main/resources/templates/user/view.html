@@ -15,11 +15,11 @@
     <form action="#" th:action="@{/user/list}" th:object="${user}">
         <table class="table table-bordered">
             <tr>
-                <th class="cell_title">ID</th>
+                <th class="">ID</th>
                 <td th:text="*{id}"></td>
             </tr>
             <tr>
-                <th class="cell_title" th:text="#{name}">Name</th>
+                <th class="" th:text="#{name}">Name</th>
                 <td th:text="*{name}"></td>
             </tr>
             <tr>
@@ -27,20 +27,19 @@
                 <td th:text="*{nationality}"></td>
             </tr>
             <tr>
-                <th class="cell_title" th:text="#{office}">Office</th>
+                <th class="" th:text="#{office}">Office</th>
                 <td th:text="*{office}"></td>
             </tr>
             <tr>
-                <th class="cell_title" th:text="#{hobbies}">Hobbies</th>
+                <th class="" th:text="#{hobbies}">Hobbies</th>
                 <td th:text="*{hobby}"></td>
             </tr>
         </table>
 
-        <div class="center">
-            <button type="submit" class="btn btn-default" th:text="#{back}">Back</button>
-            <a class="btn btn-default" th:href="@{/user/{id}/edit(id=*{id})}" th:text="#{edit}">Edit</a>
+        <div class="text-center">
+            <button class="btn btn-outline-secondary" th:text="#{back}">Back</button>
+            <a class="btn btn-outline-primary" th:href="@{/user/{id}/edit(id=*{id})}" th:text="#{edit}">Edit</a>
         </div>
-
     </form>
     </body>
 </div>

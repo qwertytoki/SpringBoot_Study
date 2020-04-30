@@ -20,7 +20,7 @@
     <form action="#" th:action="@{/user/list}" th:object="${search}">
         <table class="table table-sm">
             <tr>
-                <th class="cell_title" th:text="#{name}">Name</th>
+                <th class="" th:text="#{name}">Name</th>
                 <td class="text-left"><input type="text" th:field="*{name}"></td>
             </tr>
             <tr class="form-group">
@@ -42,7 +42,9 @@
                 </td>
             <tr class="form-group">
         </table>
-        <div class="btn_area_center text-right"><input type="submit" th:value="#{search}" class="btn-primary"></div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary" th:text="#{search}"></button>
+        </div>
     </form>
     <table class="table table-hover table-striped">
         <thead>
