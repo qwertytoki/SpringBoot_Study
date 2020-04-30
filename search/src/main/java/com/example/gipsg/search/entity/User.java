@@ -8,9 +8,6 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-/**
- * ユーザー情報 Entity
- */
 @Entity
 @Data
 @AllArgsConstructor

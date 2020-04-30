@@ -37,10 +37,6 @@ public class UserDao {
         session.setAttribute("userDB", userList);
     }
 
-    public User getUser(@RequestBody User user) {
-        return user;
-    }
-
     private String getAllUserByJson() {
         return "[{\"id\":\"1\", \"name\":\"shuyeah\", \"nationality\":\"Japan\", \"office\":\"Singapore\", \"hobby\":\"Workout\"},"
                 + "{\"id\":\"2\", \"name\":\"Nook\", \"nationality\":\"Singapore\", \"office\":\"Singapore\", \"hobby\":\"Buffet\"},"
