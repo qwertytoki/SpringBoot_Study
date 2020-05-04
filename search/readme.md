@@ -17,3 +17,5 @@ This is POC by using SpringBoot + Thymeleaf
 Follow below guidance. You will be able to start developing in 15mins.
 https://spring.io/guides/gs/serving-web-content/
 
+In the above guidance, you can generate project by using Spring Initializer.
+Do add Thymeleaf,Spring web, lombok for dependencies. 
