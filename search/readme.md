@@ -1,7 +1,6 @@
 This is POC by using SpringBoot + Thymeleaf
-# How to Run 
+# How to Run by using Docker.
 1. Install Docker
-
     Mac : https://docs.docker.com/docker-for-mac/  </br>
     Windows : https://docs.docker.com/docker-for-windows/
 
@@ -13,3 +12,8 @@ This is POC by using SpringBoot + Thymeleaf
 
 4. Access URL   
     ```http://localhost:8080/user/list```
+
+# How to start developing
+Follow below guidance. You will be able to start developing in 15mins.
+https://spring.io/guides/gs/serving-web-content/
+
