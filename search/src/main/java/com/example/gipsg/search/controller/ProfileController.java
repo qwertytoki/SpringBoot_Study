@@ -39,7 +39,7 @@ public class ProfileController {
         model.addAttribute("userlist", userList);
         model.addAttribute("radioItems", searchItemService.getRadioItems());
         model.addAttribute("checkItems", searchItemService.getCheckItems());
-        return "user/list";
+        return "profile/list";
     }
 
     @RequestMapping("/profile/{id}")
@@ -50,7 +50,7 @@ public class ProfileController {
             user = userSearchService.findById(id);
         }
         model.addAttribute("user", user);
-        return "user/view";
+        return "profile/view";
     }
 
     @RequestMapping("/profile/{id}/edit")
@@ -68,6 +68,6 @@ public class ProfileController {
             List<String> selectedHobbies = Arrays.asList(user.getHobby().split(","));
             model.addAttribute("selectedHobbies", selectedHobbies);
         }
-        return "user/edit_view";
+        return "profile/edit_view";
     }
 }
