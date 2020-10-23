@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <div class="container">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<div class="container">
     <head>
-      <title>User Info</title>
-      <link
-        rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-      />
-      <script
-        type="text/javascript"
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-      ></script>
-      <script
-        type="text/javascript"
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-      ></script>
-      <meta charset="utf-8" />
+        <title>Basic Information</title>
+        <link
+                rel="stylesheet"
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        />
+        <script
+                type="text/javascript"
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+        ></script>
+        <script
+                type="text/javascript"
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        ></script>
+        <meta charset="utf-8"/>
     </head>
     <body>
-<!--      <div class="text-right">-->
-<!--        <a href="/profile/list?lang=en">English</a>-->
-<!--        &nbsp;|&nbsp;-->
-<!--        <a href="/profile/list?lang=ja">日本語</a>-->
-<!--      </div>-->
-      <h1>User Information</h1>
-      <form action="#" th:action="@{/profile/list}" th:object="${search}">
+    <h3>Basic</h3>
+    <form action="#" th:action="@{/profile/list}" th:object="${search}">
         <div class="form-group">
-          <label >Unko</label>
-          <input type="text" class="form-control" th:field="*{name}" />
+          <span className="col-sm-3 col-xl-2 col-form-label input-label">
+            Marital Status
+          <span className="mand">*</span></span>
+          <Select
+                  name="language"
+
+          classNamePrefix="select-languages"
+          options={languageOptions}
+          getOptionValue={(option) => option.id}
+          getOptionLabel={(option) => option.name}
+          id="languageSelect"
+          value={notificationForm.language || ''}
+          onChange={handleOnLanguageChange}
+          isClearable={false}
+          />
         </div>
-        <label th:text="hoge"></label>
+        <label th:text="Nationality"></label>
         <div class="form-group">
-          <div
-            class="form-check form-check-inline"
-            th:each="item : ${radioItems}"
-          >
-            <input
-              type="radio"
-              name="selectedRadio"
-              th:field="*{nationality}"
-              th:value="${item.key}"
-              th:text="${item.value}"
-              class="form-check-input"
-            />
-          </div>
+            <div
+                    class="form-check form-check-inline"
+                    th:each="item : ${radioItems}"
+            >
+                <input
+                        type="radio"
+                        name="selectedRadio"
+                        th:field="*{nationality}"
+                        th:value="${item.key}"
+                        th:text="${item.value}"
+                        class="form-check-input"
+                />
+            </div>
         </div>
         <label th:text="#{office}"></label>
         <div class="form-group">
-          <div
-            class="form-check form-check-inline"
-            th:each="item : ${checkItems}"
-          >
-            <input
-              class="form-check-input"
-              type="checkbox"
-              th:field="*{office}"
-              th:value="${item}"
-            />
-            <label class="form-check-label" th:text="${item}">1</label>
-          </div>
+            <div
+                    class="form-check "
+                    th:each="item : ${checkItems}"
+            >
+                <input
+                        class="form-check-input"
+                        type="checkbox"
+                        th:field="*{office}"
+                        th:value="${item}"
+                />
+                <label class="form-check-label" th:text="${item}">1</label>
+            </div>
         </div>
-        <div class="text-right">
-          <button
-            type="submit"
-            class="btn btn-outline-primary"
-            th:text="#{search}"
-          ></button>
+        <div class="text-center">
+            <button
+                    type="submit"
+                    class="btn btn-outline-primary center"
+                    th:text="Submit"
+            ></button>
         </div>
-      </form>
-      <table class="table table-hover table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th th:text="#{name}">Name</th>
-            <th th:text="#{nationality}">Nationality</th>
-            <th th:text="#{office}">Office</th>
-            <th th:text="#{hobbies}">Hobby</th>
-            <th th:text="#{link}">Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="user : ${userlist}" th:object="${user}">
-            <td class="center" th:text="*{id}"></td>
-            <td class="center" th:text="*{name}"></td>
-            <td class="center" th:text="*{nationality}"></td>
-            <td class="center" th:text="*{office}"></td>
-            <td class="center" th:text="*{hobby}"></td>
-            <td class="center">
-              <a th:href="@{/profile/{id}(id=*{id})}">Detail</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    </form>
+    <!--      <table class="table table-hover table-striped">-->
+    <!--        <thead>-->
+    <!--          <tr>-->
+    <!--            <th>ID</th>-->
+    <!--            <th th:text="#{name}">Name</th>-->
+    <!--            <th th:text="#{nationality}">Nationality</th>-->
+    <!--            <th th:text="#{office}">Office</th>-->
+    <!--            <th th:text="#{hobbies}">Hobby</th>-->
+    <!--            <th th:text="#{link}">Link</th>-->
+    <!--          </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--          <tr th:each="user : ${userlist}" th:object="${user}">-->
+    <!--            <td class="center" th:text="*{id}"></td>-->
+    <!--            <td class="center" th:text="*{name}"></td>-->
+    <!--            <td class="center" th:text="*{nationality}"></td>-->
+    <!--            <td class="center" th:text="*{office}"></td>-->
+    <!--            <td class="center" th:text="*{hobby}"></td>-->
+    <!--            <td class="center">-->
+    <!--              <a th:href="@{/profile/{id}(id=*{id})}">Detail</a>-->
+    <!--            </td>-->
+    <!--          </tr>-->
+    <!--        </tbody>-->
+    <!--      </table>-->
     </body>
-  </div>
+</div>
 </html>
