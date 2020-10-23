@@ -1,6 +1,12 @@
-.dropdown.btn{
+.dropdown .btn{
     background-color: #fffffe ;
     border:0.5px solid;
-    border-color: #808080;
+    border-color: #C0C0C0;
     width:100%
+}
+.dropdown-toggle::after {
+    display: none;
+}
+.fa-chevron-down{
+    margin-right: auto;
 }

@@ -2,20 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <div class="container">
+
+    <br>
     <head>
         <title>Basic Information</title>
-        <link
-                rel="stylesheet"
-                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-        />
-        <script
-                type="text/javascript"
-                src="https://code.jquery.com/jquery-3.3.1.min.js"
-        ></script>
-        <script
-                type="text/javascript"
-                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-        ></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+        <link href="/css/profile/list.css" rel="stylesheet"></link>
         <meta charset="utf-8"/>
     </head>
     <body>
@@ -25,37 +21,86 @@
           <span className="col-sm-3 col-xl-2 col-form-label input-label">
             Marital Status
           <span className="mand">*</span></span>
-          <Select
-                  name="language"
-
-          classNamePrefix="select-languages"
-          options={languageOptions}
-          getOptionValue={(option) => option.id}
-          getOptionLabel={(option) => option.name}
-          id="languageSelect"
-          value={notificationForm.language || ''}
-          onChange={handleOnLanguageChange}
-          isClearable={false}
-          />
-        </div>
-        <label th:text="Nationality"></label>
-        <div class="form-group">
-            <div
-                    class="form-check form-check-inline"
-                    th:each="item : ${radioItems}"
-            >
-                <input
-                        type="radio"
-                        name="selectedRadio"
-                        th:field="*{nationality}"
-                        th:value="${item.key}"
-                        th:text="${item.value}"
-                        class="form-check-input"
-                />
+            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Married
+                    <i class="fas fa-chevron-down text-right"></i>
+                </button>
+                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Single</a>
+                    <a class="dropdown-item" href="#">Married</a>
+                    <a class="dropdown-item" href="#">Divorced / Widwoed / Widower / Separated</a>
+                </div>
             </div>
         </div>
-        <label th:text="#{office}"></label>
         <div class="form-group">
+          <span className="col-sm-3 col-xl-2 col-form-label input-label">
+            Employment Status
+          <span className="mand">*</span></span>
+            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Full time
+                    <i class="fas fa-chevron-down text-right"></i>
+                </button>
+                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Single</a>
+                    <a class="dropdown-item" href="#">Married</a>
+                    <a class="dropdown-item" href="#">Divorced / Widwoed / Widower / Separated</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <span className="col-sm-3 col-xl-2 col-form-label input-label">
+            Industry
+          <span className="mand">*</span></span>
+            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    IT
+                    <i class="fas fa-chevron-down text-right"></i>
+                </button>
+                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Single</a>
+                    <a class="dropdown-item" href="#">Married</a>
+                    <a class="dropdown-item" href="#">Divorced / Widwoed / Widower / Separated</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <span className="col-sm-3 col-xl-2 col-form-label input-label">
+            Annual Personal Income (Total)
+          <span className="mand">*</span></span>
+            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    50,001 to 60,000 Singapore dollars
+                    <i class="fas fa-chevron-down text-right"></i>
+                </button>
+                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Single</a>
+                    <a class="dropdown-item" href="#">Married</a>
+                    <a class="dropdown-item" href="#">Divorced / Widwoed / Widower / Separated</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+          <span className="col-sm-3 col-xl-2 col-form-label input-label">
+            Annual Household Income (Total)
+          <span className="mand">*</span></span>
+            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    50,001 to 60,000 Singapore dollars
+                    <i class="fas fa-chevron-down text-right"></i>
+                </button>
+                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Single</a>
+                    <a class="dropdown-item" href="#">Married</a>
+                    <a class="dropdown-item" href="#">Divorced / Widwoed / Widower / Separated</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <span className="col-sm-3 col-xl-2 col-form-label input-label">
+                Survey Languages
+            <span className="mand">*</span></span>
             <div
                     class="form-check "
                     th:each="item : ${checkItems}"
@@ -72,7 +117,7 @@
         <div class="text-center">
             <button
                     type="submit"
-                    class="btn btn-outline-primary center"
+                    class="btn btn-primary center"
                     th:text="Submit"
             ></button>
         </div>
@@ -101,6 +146,9 @@
     <!--          </tr>-->
     <!--        </tbody>-->
     <!--      </table>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </div>
 </html>
