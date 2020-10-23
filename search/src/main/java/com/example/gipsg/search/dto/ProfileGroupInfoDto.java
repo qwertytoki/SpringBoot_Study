@@ -1,4 +1,4 @@
-package com.rakuten.insight.profile.api.dto;
+package com.example.gipsg.search.dto;
 
 import lombok.Builder;
 import lombok.Data;

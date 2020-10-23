@@ -1,6 +1,7 @@
 package com.example.gipsg.search.service;
 
 import com.example.gipsg.search.dao.UserDao;
+import com.example.gipsg.search.dto.ProfileGroupInfoDto;
 import com.example.gipsg.search.entity.Search;
 import com.example.gipsg.search.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,10 @@ public class ViewService {
         }
         userDao.saveUsers(userList);
         return userList;
+    }
+
+    public List<ProfileGroupInfoDto> getPUSQuestionsById(String id) {
+        List<ProfileGroupInfoDto> questionList = new ArrayList<>();
+        return questionList;
     }
 }
