@@ -7,10 +7,6 @@
     <head>
         <title>Basic Information</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
         <link href="/css/profile/list.css" rel="stylesheet"></link>
         <meta charset="utf-8"/>
     </head>
@@ -33,12 +29,22 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <div
-                    class="form-check form-check-inline"
-                    th:each="question : ${questionList}"
-            >
-                <label class="form-check-label" th:text="${question.id}"></label>
+        <div th:each="question : ${questionList}">
+            <div class="form-group">
+                <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}">
+                    <span className="mand">*</span>
+                </span>
+                <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
+                    <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Please select.
+                        <i class="fas fa-chevron-down text-right"></i>
+                    </button>
+                    <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Single</a>
+                        <a class="dropdown-item" href="#">Married</a>
+                        <a class="dropdown-item" href="#">Divorced / Widowed / Widower / Separated</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -93,6 +99,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+      $(function(){
+        $('.dropdown-menu .dropdown-item').click(function(){
+          var visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
+          visibleItem.text($(this).attr('value'));
+        });
+      });
+    </script>
+
     </body>
 </div>
 </html>
