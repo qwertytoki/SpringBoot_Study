@@ -50,13 +50,27 @@ public class ProfileController {
     public String input(
             @Valid @ModelAttribute("profile") Profile profile,
             Model model, HttpServletRequest request) {
-        questionList =  validate(profile);
+        Map<Long,String> profileMap = new HashMap<>();
+        for(String answer:profile.getAnswer()){
+            String[] answerArray = answer.split(",");
+            if(answerArray.length>1){
+                profileMap.put(Long.parseLong(answerArray[0]),answerArray[1]);
+            }
+        }
+        questionList =  validate(profileMap);
         model.addAttribute("questionList", questionList);
         return "profile/list";
     }
 
-    private List<ProfileGroupInfoDto> validate(Profile profile) {
-        questionList.get(0).setIsError(true);
+    private List<ProfileGroupInfoDto> validate(Map<Long,String> profileMap) {
+        for(ProfileGroupInfoDto question:questionList){
+            String value =profileMap.get(question.getAttributeId());
+            if(value == null){
+                question.setIsError(true);
+            }else{
+                question.setIsError(false);
+            }
+        }
         return questionList;
     }
 
