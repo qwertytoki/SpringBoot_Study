@@ -1,5 +1,6 @@
 package com.example.gipsg.search.service;
 
+import com.example.gipsg.search.dao.ProfileDao;
 import com.example.gipsg.search.dao.UserDao;
 import com.example.gipsg.search.dto.ProfileGroupInfoDto;
 import com.example.gipsg.search.entity.Search;
@@ -18,6 +19,9 @@ import java.util.List;
 public class ViewService {
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    ProfileDao profileDao;
 
     public List<String> getHobbies(String selectedHobbies) {
         String[] hobbyArray = {""};
@@ -55,7 +59,7 @@ public class ViewService {
     }
 
     public List<ProfileGroupInfoDto> getPUSQuestionsById(String id) {
-        List<ProfileGroupInfoDto> questionList = new ArrayList<>();
+        List<ProfileGroupInfoDto> questionList = profileDao.getProfilesById(id);
         return questionList;
     }
 }
