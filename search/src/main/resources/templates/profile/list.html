@@ -12,29 +12,34 @@
     </head>
     <body>
     <h4>Basic</h4>
-    <form action="#" th:action="@{/profile/list}" th:object="${search}">
+    <form action="#" th:action="@{/profile/list}" th:object="${profileGroupInfoDto}">
         <div th:each="question : ${questionList}">
             <div class="form-group">
-                <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}"></span><span className="mand">*</span>
+                <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}"></span><span className="mand"> *</span>
                 <div th:if="${question.fieldType == 3}"  className="col-sm-4 col-xl-4 input-content" class="dropdown">
                     <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Please select.
+                        Please select ...
                         <i class="fas fa-chevron-down text-right"></i>
                     </button>
                     <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
                         <div th:each="option : ${question.options}">
-                            <a class="dropdown-item" th:value="${option.answer}" th:id="${option.value}"  th:text="${option.answer}" ></a>
+                            <a class="dropdown-item"
+                               th:value="${option.answer}"
+                               th:field="*{storedColumn}"
+                               th:id="${option.value}"
+                               th:text="${option.answer}" >
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div th:if="${question.fieldType == 1}" class="form-check "  th:each="item : ${checkItems}">
+                <div th:if="${question.fieldType == 1}" class="form-check "  th:each="option : ${question.options}">
                     <input
                             class="form-check-input"
                             type="checkbox"
-                            th:field="*{office}"
-                            th:value="${item}"
+                            th:field="*{storedColumn}"
+                            th:value="${option.value}"
                     />
-                    <label class="form-check-label" th:text="${item}">1</label>
+                    <label class="form-check-label" th:text="${option.answer}"></label>
                 </div>
             </div>
         </div>

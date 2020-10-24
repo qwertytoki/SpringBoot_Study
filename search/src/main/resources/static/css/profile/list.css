@@ -10,3 +10,6 @@
 .fa-chevron-down{
     margin-right: auto;
 }
+.btn.dropdown-toggle{
+    color:gray;
+}

@@ -31,7 +31,7 @@ public class ProfileController {
     private MessageSource messageSource;
 
     @RequestMapping("/profile/list")
-    public String displayList(@ModelAttribute("search") Search search, Model model,@RequestParam("id") String id) {
+    public String displayList(@ModelAttribute("profileGroupInfoDto") ProfileGroupInfoDto profileGroupInfoDto, Model model,@RequestParam("id") String id) {
         List<ProfileGroupInfoDto> questionList = viewService.getPUSQuestionsById(id);
         model.addAttribute("questionList", questionList);
         model.addAttribute("checkItems", searchItemService.getCheckItems());
