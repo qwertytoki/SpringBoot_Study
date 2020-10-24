@@ -66,13 +66,40 @@ public class ProfileDao {
     }
 
     private String getProfile1Json() {
-        return "[" +
-                "{" +
-                "\"id\": 2401" +
-                "}," +
-                "{" +
-                "\"id\": 2526" +
-                "}]";
+        return "[\n" +
+                "    {\n" +
+                "        \"id\": 2401,\n" +
+                "        \"attributeId\": 23,\n" +
+                "        \"mainQuestionFlg\": true,\n" +
+                "        \"mainQuestionId\": -1,\n" +
+                "        \"question\": \"Marital Status\",\n" +
+                "        \"values\": [\"1\"],\n" +
+                "        \"fieldType\": 3,\n" +
+                "        \"mandatory\": true,\n" +
+                "        \"isNumber\": false,\n" +
+                "        \"storedColumn\": \"profile_json\",\n" +
+                "        \"storedJson\": \"ma\",\n" +
+                "        \"max\": null,\n" +
+                "        \"min\": null,\n" +
+                "        \"pattern\": null\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"id\": 2526,\n" +
+                "        \"attributeId\": 25,\n" +
+                "        \"mainQuestionFlg\": true,\n" +
+                "        \"mainQuestionId\": -1,\n" +
+                "        \"question\": \"Employment Status\",\n" +
+                "        \"values\": [\"1\"],\n" +
+                "        \"fieldType\": 3,\n" +
+                "        \"mandatory\": true,\n" +
+                "        \"isNumber\": false,\n" +
+                "        \"storedColumn\": \"profile_json\",\n" +
+                "        \"storedJson\": \"occ\",\n" +
+                "        \"max\": null,\n" +
+                "        \"min\": null,\n" +
+                "        \"pattern\": null\n" +
+                "    }\n" +
+                "]";
     }
 
 
