@@ -17,20 +17,15 @@
             <div class="form-group">
                 <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}"></span><span className="mand"> *</span>
                 <div th:if="${question.fieldType == 3}"  className="col-sm-4 col-xl-4 input-content" class="dropdown">
-                    <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Please select ...
-                        <i class="fas fa-chevron-down text-right"></i>
-                    </button>
-                    <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
-                        <div th:each="option : ${question.options}">
-                            <a class="dropdown-item"
-                               th:value="${option.answer}"
-                               th:field="*{storedColumn}"
-                               th:id="${option.value}"
-                               th:text="${option.answer}" >
-                            </a>
-                        </div>
-                    </div>
+                    <select class="form-control" id="formControlSelect">
+                        <option value="" selected disabled>Please select ...</option>
+                        <option th:each="option : ${question.options}"
+                           th:value="${option.answer}"
+                           th:field="*{storedColumn}"
+                           th:id="${option.value}"
+                           th:text="${option.answer}" >
+                        </option>
+                    </select>
                 </div>
                 <div th:if="${question.fieldType == 1}" class="form-check "  th:each="option : ${question.options}">
                     <input

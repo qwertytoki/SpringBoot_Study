@@ -11,5 +11,5 @@
     margin-right: auto;
 }
 .btn.dropdown-toggle{
-    color:gray;
+    min-height: 40px;
 }
