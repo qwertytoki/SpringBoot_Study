@@ -13,3 +13,6 @@
 .btn.dropdown-toggle{
     min-height: 40px;
 }
+.dropdown-placeholder{
+    color:gray;
+}

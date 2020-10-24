@@ -1,6 +1,7 @@
 package com.example.gipsg.search.controller;
 
 import com.example.gipsg.search.dto.ProfileGroupInfoDto;
+import com.example.gipsg.search.entity.Profile;
 import com.example.gipsg.search.entity.Search;
 import com.example.gipsg.search.entity.User;
 import com.example.gipsg.search.service.SearchItemService;
@@ -31,7 +32,7 @@ public class ProfileController {
     private MessageSource messageSource;
 
     @RequestMapping("/profile/list")
-    public String displayList(@ModelAttribute("profileGroupInfoDto") ProfileGroupInfoDto profileGroupInfoDto, Model model,@RequestParam("id") String id) {
+    public String displayList(@ModelAttribute("profile") Profile profile, Model model, @RequestParam("id") String id) {
         List<ProfileGroupInfoDto> questionList = viewService.getPUSQuestionsById(id);
         model.addAttribute("questionList", questionList);
         model.addAttribute("checkItems", searchItemService.getCheckItems());
