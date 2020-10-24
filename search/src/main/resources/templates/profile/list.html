@@ -13,27 +13,9 @@
     <body>
     <h5>Basic</h5>
     <form action="#" th:action="@{/profile/list}" th:object="${search}">
-        <div class="form-group">
-          <span className="col-sm-3 col-xl-2 col-form-label input-label">
-            Marital Status
-          <span className="mand">*</span></span>
-            <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
-                <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Married
-                    <i class="fas fa-chevron-down text-right"></i>
-                </button>
-                <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" value="Single">Single</a>
-                    <a class="dropdown-item" value="Married">Married</a>
-                    <a class="dropdown-item" value="Divorced / Widowed / Widower / Separated">Divorced / Widowed / Widower / Separated</a>
-                </div>
-            </div>
-        </div>
         <div th:each="question : ${questionList}">
             <div class="form-group">
-                <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}">
-                    <span className="mand">*</span>
-                </span>
+                <span className="col-sm-3 col-xl-2 col-form-label input-label" th:text="${question.question}"></span><span className="mand">*</span>
                 <div className="col-sm-4 col-xl-4 input-content" class="dropdown">
                     <button class="btn dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Please select.
@@ -41,7 +23,7 @@
                     </button>
                     <div class="dropdown-menu" style="width:100%" aria-labelledby="dropdownMenuButton">
                         <div th:each="option : ${question.options}">
-                            <a class="dropdown-item" th:value="${option.value}" th:text="${option.answer}" ></a>
+                            <a class="dropdown-item" th:value="${option.answer}" th:id="${option.value}"  th:text="${option.answer}" ></a>
                         </div>
                     </div>
                 </div>
