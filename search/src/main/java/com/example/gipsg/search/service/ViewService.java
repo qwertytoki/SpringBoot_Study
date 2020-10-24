@@ -61,7 +61,6 @@ public class ViewService {
 
     public List<ProfileGroupInfoDto> getPUSQuestionsById(String id) {
         List<ProfileGroupInfoDto> questionList = profileDao.getProfilesById(id);
-//        List<AnswerOptionsDto> optionsList = profileDao.getOptions();
         return questionList;
     }
 }

@@ -30,4 +30,5 @@ public class ProfileGroupInfoDto implements Serializable {
     private Integer max;
     private Integer min;
     private String pattern;
+    private Boolean isError;
 }

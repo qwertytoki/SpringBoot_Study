@@ -12,11 +12,13 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -31,12 +33,31 @@ public class ProfileController {
     @Autowired
     private MessageSource messageSource;
 
+    private List<ProfileGroupInfoDto> questionList;
+
     @RequestMapping("/profile/list")
     public String displayList(@ModelAttribute("profile") Profile profile, Model model, @RequestParam("id") String id) {
-        List<ProfileGroupInfoDto> questionList = viewService.getPUSQuestionsById(id);
+        if(id == null){
+            id = "1";
+        }
+        questionList = viewService.getPUSQuestionsById(id);
         model.addAttribute("questionList", questionList);
         model.addAttribute("checkItems", searchItemService.getCheckItems());
         return "profile/list";
+    }
+
+    @RequestMapping(value = "/input", method = RequestMethod.POST)
+    public String input(
+            @Valid @ModelAttribute("profile") Profile profile,
+            Model model, HttpServletRequest request) {
+        questionList =  validate(profile);
+        model.addAttribute("questionList", questionList);
+        return "profile/list";
+    }
+
+    private List<ProfileGroupInfoDto> validate(Profile profile) {
+        questionList.get(0).setIsError(true);
+        return questionList;
     }
 
     @RequestMapping("/profile/{id}")
