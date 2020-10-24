@@ -2,6 +2,7 @@ package com.example.gipsg.search.service;
 
 import com.example.gipsg.search.dao.ProfileDao;
 import com.example.gipsg.search.dao.UserDao;
+import com.example.gipsg.search.dto.AnswerOptionsDto;
 import com.example.gipsg.search.dto.ProfileGroupInfoDto;
 import com.example.gipsg.search.entity.Search;
 import com.example.gipsg.search.entity.User;
@@ -60,6 +61,7 @@ public class ViewService {
 
     public List<ProfileGroupInfoDto> getPUSQuestionsById(String id) {
         List<ProfileGroupInfoDto> questionList = profileDao.getProfilesById(id);
+//        List<AnswerOptionsDto> optionsList = profileDao.getOptions();
         return questionList;
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 
@@ -30,26 +31,22 @@ public class ProfileController {
     private MessageSource messageSource;
 
     @RequestMapping("/profile/list")
-    public String displayList(@ModelAttribute("search") Search search, Model model) {
-        List<User> userList = userSearchService.search(search);
-        model.addAttribute("search", search);
-        model.addAttribute("userlist", userList);
-        model.addAttribute("radioItems", searchItemService.getRadioItems());
+    public String displayList(@ModelAttribute("search") Search search, Model model,@RequestParam("id") String id) {
+        List<ProfileGroupInfoDto> questionList = viewService.getPUSQuestionsById(id);
+        model.addAttribute("questionList", questionList);
         model.addAttribute("checkItems", searchItemService.getCheckItems());
         return "profile/list";
     }
 
     @RequestMapping("/profile/{id}")
-    public String displayView(@PathVariable String id, Model model) {
-        List<ProfileGroupInfoDto> questionList = viewService.getPUSQuestionsById(id);
-        model.addAttribute("questionList", questionList);
-//        if(user.getName()!=null){
-//            viewService.updateUserInfo(user);
-//        }else{
-//            user = userSearchService.findById(id);
-//        }
-//        model.addAttribute("user", user);
-        return "profile/list";
+    public String displayView(@PathVariable String id, @ModelAttribute("user") User user, Model model) {
+        if(user.getName()!=null){
+            viewService.updateUserInfo(user);
+        }else{
+            user = userSearchService.findById(id);
+        }
+        model.addAttribute("user", user);
+        return "user/view";
     }
 
     @RequestMapping("/profile/{id}/edit")
